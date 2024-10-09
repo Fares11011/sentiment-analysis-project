@@ -1,10 +1,34 @@
 
 # Download Sentiment140 Dataset using Kaggle
-!mkdir -p ~/.kaggle
-!cp /content/drive/MyDrive/kaggle.json ~/.kaggle/
-!chmod 600 ~/.kaggle/kaggle.json
-!kaggle datasets download -d kazanova/sentiment140
-!unzip sentiment140.zip
+# !mkdir -p ~/.kaggle
+# !cp /content/drive/MyDrive/kaggle.json ~/.kaggle/
+# !chmod 600 ~/.kaggle/kaggle.json
+# !kaggle datasets download -d kazanova/sentiment140
+# !unzip sentiment140.zip
+import os
+import zipfile
+import shutil
+
+# 1. إعداد وتثبيت المكتبات (يجب أن يتم ذلك مرة واحدة قبل تشغيل الكود)
+# قم بتثبيت المكتبات المطلوبة باستخدام requirements.txt
+
+# 2. إعداد مسار Kaggle
+kaggle_json_path = '/content/drive/MyDrive/kaggle.json'
+kaggle_dir = os.path.expanduser('~/.kaggle')
+
+# التأكد من وجود مجلد Kaggle
+if not os.path.exists(kaggle_dir):
+    os.makedirs(kaggle_dir)
+
+shutil.copy(kaggle_json_path, kaggle_dir)
+
+os.chmod(os.path.join(kaggle_dir, 'kaggle.json'), 0o600)
+
+os.system('kaggle datasets download -d kazanova/sentiment140')
+
+with zipfile.ZipFile('sentiment140.zip', 'r') as zip_ref:
+    zip_ref.extractall()
+
 
 # Load Dataset into Pandas
 import pandas as pd
