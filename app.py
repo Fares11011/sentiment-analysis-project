@@ -1,5 +1,3 @@
-# Install and Upgrade Required Libraries
-!pip install --upgrade transformers emoji kaggle pandas matplotlib
 
 # Download Sentiment140 Dataset using Kaggle
 !mkdir -p ~/.kaggle
