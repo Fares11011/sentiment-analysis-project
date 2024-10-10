@@ -10,3 +10,4 @@ scikit-learn
 streamlit
 datasets
 streamlit-drawable-canvas
+numpy
